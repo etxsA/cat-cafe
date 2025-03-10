@@ -1,31 +1,27 @@
 -- Database Initialization
--- backend/sql/init.sql
-DROP TABLE IF EXISTS gatos;
-DROP TABLE IF EXISTS platillos;
-DROP TABLE IF EXISTS usuarios;
 
-CREATE TABLE gatos (
+CREATE TABLE IF NOT EXISTS gatos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre TEXT NOT NULL,
-    foto TEXT NOT NULL,
-    descripcion TEXT NOT NULL
+    descripcion TEXT NOT NULL,
+    foto TEXT NOT NULL
 );
 
-CREATE TABLE platillos (
+CREATE TABLE IF NOT EXISTS platillos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre TEXT NOT NULL,
     precio REAL NOT NULL
 );
 
-CREATE TABLE usuarios (
+CREATE TABLE IF NOT EXISTS usuarios (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     usuario TEXT NOT NULL UNIQUE,
     contrasena TEXT NOT NULL
 );
 
 /* Default cats*/
-INSERT INTO gatos (nombre, foto, descripcion) VALUES
-('Nebulosa', 'https://via.placeholder.com/150?text=Nebulosa', 'Un gato misterioso que adora flotar entre las estrellas.'),
+INSERT INTO gatos (nombre, descripcion, foto) VALUES
+('Nebulosa', '', ),
 ('Galaxio', 'https://via.placeholder.com/150?text=Galaxio', 'Le encanta perseguir cometas y rayos de luz.'),
 ('Astrix', 'https://via.placeholder.com/150?text=Astrix', 'Hábil cazador de asteroides.'),
 ('Cosmo', 'https://via.placeholder.com/150?text=Cosmo', 'Siempre soñando con viajes interplanetarios.'),
