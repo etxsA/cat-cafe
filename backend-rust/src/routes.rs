@@ -1,8 +1,7 @@
-// Definition of routes of the api 
-use rocket::http::Status; 
-use rocket::response::status;
+use std::collections::HashMap;
+use rocket::http::Status;
 use rocket::serde::json::Json;
-use rocket::State; 
+use once_cell::sync::Lazy;
 
 
 use crate::db::DbConn; 
@@ -31,7 +30,66 @@ pub async fn login(conn: DbConn, login_request: Json<LoginRequest>) -> Result<Js
 
     match result {
         Ok(Some(user)) => {
-            if verify(%login_data.password, &user.pass)
+            // Verificamos contraseña
+
+            if verify(&login_data.password, &user.pass).unwrap_or(false) {
+                Ok(Json(true))
+            } else {
+                Ok(Json(false))
+            }
         }
+        Ok(None) => {
+            // Usuario no encontrado
+            Ok(Json(false))
+        }
+        Err(_) => {
+            // Enviar Error
+            Err(Status::InternalServerError)
+        }
+
     }
 }
+
+// Menú
+
+#[get("/menu")]
+pub async fn get_menu(conn: DbConn) -> Result<Json<Vec<Platillo>>, Status> {
+    let result = conn.run(|c| {
+        platillos::table
+        .load::<Platillo>(c)
+    }).await;
+
+    match result { 
+        Ok(menu) => Ok(Json(menu)),
+        Err(_) => Err(Status::InternalServerError),
+    }
+}
+
+// Infor gatos
+#[get("/gatos")]
+pub async fn get_gatos(conn: DbConn) -> Result<Json<Vec<Gato>>, Status> {
+    let result = conn.run(|c| {
+        gatos::table
+            .load::<Gato>(c)
+    }).await;    
+
+    match result {
+        Ok(gatos) => Ok(Json(gatos)),
+        Err(_) => Err(Status::InternalServerError),
+    }
+}
+
+// Imagenes
+static IMAGES: Lazy<HashMap<String, String>> = Lazy::new(|| {
+    let mut map = HashMap::new();
+    map.insert("gato1.png".to_string(), "https://example.com/images/gato1.png".to_string());
+    map.insert("gato2.png".to_string(), "https://example.com/images/gato2.png".to_string());
+    map
+});
+
+#[get("/imagenes")]
+pub async fn get_images() -> Json<HashMap<String, String>> {
+    Json(IMAGES.clone())
+}
+
+// Textos

@@ -1,26 +1,24 @@
-// Models
 use serde::{Deserialize, Serialize};
+use diesel::prelude::*;
 
 #[derive(Queryable, Serialize, Deserialize)]
 pub struct Usuario {
-    pub id: i32,
+    pub id: Option<i32>,
     pub usuario: String,
-    pub password_hash: String,
+    pub pass: String,
 }
-
 
 #[derive(Queryable, Serialize, Deserialize)]
 pub struct Platillo {
-    pub id: i32, 
+    pub id: Option<i32>,
     pub nombre: String, 
-    pub precio: i32, 
+    pub precio: f32,
 }
 
 #[derive(Queryable, Serialize, Deserialize)]
 pub struct Gato {
-    pub id: i32, 
+    pub id: Option<i32>,
     pub nombre: String, 
     pub foto: String, 
-    pub description: String,
+    pub descripcion: String,
 }
-
