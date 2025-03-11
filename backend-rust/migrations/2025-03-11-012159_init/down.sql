@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS gatos;
+DROP TABLE IF EXISTS platillos;
+DROP TABLE IF EXISTS usuarios;
