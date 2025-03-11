@@ -4,7 +4,7 @@ A simple implementation of rust backend to run the api.
 ```console 
 cargo build --release
 ```
-To run the code simply use cargo run
+To run the code simply use cargo shuttle run
 ## Initialize sqlite db
 To initialize the db file, disiel is used. 
 Run the following command to run the migration: 
@@ -27,3 +27,13 @@ diesel print-schema --database-url cosmic_cat_cafe.db > src/schema.rs
 
 ## Database connection 
 Database connection is handled through rocket sync. 
+
+## Build and Run With docker
+First build the image 
+```console
+docker build -t backend-rust:latest .
+```
+Run 
+```
+docker run -d -p 80:8000 --name backend-rust backend-rust:latest
+```
