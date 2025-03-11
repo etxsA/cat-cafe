@@ -1,6 +1,10 @@
 # RUST Backend 
 A simple implementation of rust backend to run the api.
-
+## Build 
+```console 
+cargo build --release
+```
+To run the code simply use cargo run
 ## Initialize sqlite db
 To initialize the db file, disiel is used. 
 Run the following command to run the migration: 
