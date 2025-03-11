@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS platillos (
 CREATE TABLE IF NOT EXISTS usuarios (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     usuario TEXT NOT NULL,
-    contrasena TEXT NOT NULL
+    pass TEXT NOT NULL
 );
 
 -- Insertar 5 datos de prueba en gatos
@@ -37,11 +37,11 @@ INSERT INTO platillos (nombre, precio) VALUES
 ('Saturno Latte', 85.0);
 
 -- Insertar 3 usuarios de prueba
-INSERT INTO usuarios (usuario, contrasena) VALUES
+INSERT INTO usuarios (usuario, pass) VALUES
 --- admin123
 ('admin', '$2b$12$qa.oQctSLqpYF7HWagMq1.hqnCB9ILZzUcdBj5qmXzWP/OoYs9TnS'),
 ('cosmic', '$2b$12$6VbKTpPIsu2b2Wn4u/Z01uVn5CWzCf/.4Kjsl/QVAcIqYCXczGxMG'),
-('galaxy', '$2b$12$nxpVx1uySH7cUaU38FieG.10iKnal1UxNs2Qr.mK0eGNdBfYtTsl2');
-('galaxy2', '$2b$12$nxpVx1uySH7cUaU38FieG.10iKnal1UxNs2Qr.mK0eGNdBfYtTsl2');
+('galaxy', '$2b$12$nxpVx1uySH7cUaU38FieG.10iKnal1UxNs2Qr.mK0eGNdBfYtTsl2'),
+('galaxy2', '$2b$12$nxpVx1uySH7cUaU38FieG.10iKnal1UxNs2Qr.mK0eGNdBfYtTsl2'),
 ('galaxy1', '$2b$12$nxpVx1uySH7cUaU38FieG.10iKnal1UxNs2Qr.mK0eGNdBfYtTsl2');
 

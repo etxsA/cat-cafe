@@ -20,3 +20,6 @@ Scheme is generated using the diesel_cli
 ```console
 diesel print-schema --database-url cosmic_cat_cafe.db > src/schema.rs 
 ```
+
+## Database connection 
+Database connection is handled through rocket sync. 
