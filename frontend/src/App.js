@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
+import Menu from './pages/Menu';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Route path='/login' element={<Login/>} />
         <Route path='/menu' element={
             <ProtectedRoute>
-              
+              <Menu/>
             </ProtectedRoute>
         } />
 
