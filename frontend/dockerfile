@@ -1,0 +1,20 @@
+# Dockerfile for the React frontend
+FROM node:16-alpine as build
+
+WORKDIR /app
+
+# Install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy source code and build the project
+COPY . .
+RUN npm run build
+
+# Serve the build with a lightweight static server
+FROM node:16-alpine
+WORKDIR /app
+RUN npm install -g serve
+COPY --from=build /app/build ./build
+EXPOSE 3000
+CMD ["serve", "-s", "build", "-l", "3000"]
