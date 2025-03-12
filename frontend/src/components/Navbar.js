@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import './Navbar.css';
 
 function Navbar() {
   const [imagenes, setImagenes] = useState({});
+  const { isAuthenticated, logout } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchImagenes = async () => {
@@ -19,7 +22,12 @@ function Navbar() {
     fetchImagenes();
   }, []);
 
-  const logo = imagenes.logo;
+  const logo = imagenes["logo"] || imagenes["logo.png"];
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
 
   return (
     <nav className="main-nav">
@@ -31,15 +39,23 @@ function Navbar() {
       <Link to="/" className="nav-link">
         <button className="glow-on-hover">Inicio</button>
       </Link>
-      <Link to="/login" className="nav-link">
-        <button className="glow-on-hover">Login</button>
-      </Link>
-      <Link to="/menu" className="nav-link">
-        <button className="glow-on-hover">Menu</button>
-      </Link>
-      <Link to="/sam" className="nav-link">
-        <button className="glow-on-hover">Sam... ?</button>
-      </Link>
+      {isAuthenticated ? (
+        <>
+          <Link to="/menu" className="nav-link">
+            <button className="glow-on-hover">Menu</button>
+          </Link>
+          <Link to="/sam" className="nav-link">
+            <button className="glow-on-hover">Sam... ?</button>
+          </Link>
+          <button onClick={handleLogout} className="glow-on-hover">
+            Logout
+          </button>
+        </>
+      ) : (
+        <Link to="/login" className="nav-link">
+          <button className="glow-on-hover">Login</button>
+        </Link>
+      )}
     </nav>
   );
 }
