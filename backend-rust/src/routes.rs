@@ -93,3 +93,20 @@ pub async fn get_images() -> Json<HashMap<String, String>> {
 }
 
 // Textos
+
+
+#[get("/content-landingpage")]
+pub async fn get_content_landing() -> Json<HashMap<String, String>> {
+    let mut data = HashMap::new();
+
+    data.insert("landing_title".to_string(), "Cosmic Cat Café".to_string());
+    data.insert("landing_subtitle".to_string(), "El lugar más interestelar para disfrutar de gatos y bebidas espaciales".to_string());
+
+    data.insert("landing_image".to_string(), "https://www.pngall.com/wp-content/uploads/2016/06/Nyan-Cat-PNG-Image.png".to_string());
+
+    data.insert("sam_title".to_string(), "Sam the insumergable".to_string());
+    data.insert("sam_description".to_string(), "Historia y anécdotas de Sam...".to_string());
+    data.insert("cats_info".to_string(), "Hermosos Gatos desde el espacio".to_string());
+
+    Json(data)
+}
