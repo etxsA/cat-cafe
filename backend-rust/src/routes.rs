@@ -121,3 +121,26 @@ pub async fn get_content_landing() -> Json<HashMap<String, String>> {
 
     Json(data)
 }
+
+// Sam
+#[get("/sam-content")]
+pub async fn get_sam_content() -> Json<HashMap<String, String>> {
+    let mut data = HashMap::new();
+
+    data.insert("sam_title".to_string(), "Sam el Insumergible".to_string());
+    data.insert("sam_subtitle".to_string(), "El gato que sobrevivió a tres naufragios".to_string());
+    data.insert("sam_bio".to_string(), "Originalmente llamado Oskar, Sam formó parte del acorazado Bismarck y fue rescatado por la tripulación británica tras su hundimiento. Su increíble supervivencia lo convirtió en una leyenda en tiempos de guerra.".to_string());
+    data.insert("sam_history".to_string(), "Durante la Segunda Guerra Mundial, Sam estuvo a bordo del Bismarck, del HMS Cossack y del HMS Ark Royal, sobreviviendo a tres naufragios y ganándose el apodo de 'el insumergable'.".to_string());
+    data.insert("sam_facts".to_string(), "Entre las curiosidades, se dice que Sam fue encontrado aferrado a una tabla tras cada hundimiento, y que su retrato se exhibe en el Museo Marítimo Nacional de Greenwich.".to_string());
+
+    Json(data)
+}
+
+#[get("/sam-image")]
+pub async fn get_sam_image() -> Json<HashMap<String, String>> {
+    let mut data = HashMap::new();
+
+    data.insert("sam".to_string(), "https://historia.nationalgeographic.com.es/medio/2023/07/10/insumergible-sam-simon-autor-desconocido-2_749e425d_230710191138_550x825.jpg".to_string());
+
+    Json(data)
+}

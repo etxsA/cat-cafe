@@ -5,6 +5,7 @@ import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import Menu from './pages/Menu';
+import Sam from './pages/Sam';
 
 function App() {
   return (
@@ -17,6 +18,11 @@ function App() {
         <Route path='/menu' element={
             <ProtectedRoute>
               <Menu/>
+            </ProtectedRoute>
+        } />
+        <Route path='/sam' element={
+            <ProtectedRoute>
+              <Sam/>
             </ProtectedRoute>
         } />
 

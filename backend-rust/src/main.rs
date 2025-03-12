@@ -31,5 +31,7 @@ fn rocket() -> _ {
             routes::get_gatos,
             routes::get_images,
             routes::get_content_landing,
+            routes::get_sam_content,
+            routes::get_sam_image,
         ])
 }
