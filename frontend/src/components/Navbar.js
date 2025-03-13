@@ -12,6 +12,7 @@ function Navbar() {
     const fetchImagenes = async () => {
       try {
         const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/imagenes`);
+        console.log(process.env.REACT_APP_BACKEND_URL);
         if (!response.ok) throw new Error("Error fetching imagenes");
         const data = await response.json();
         setImagenes(data);
