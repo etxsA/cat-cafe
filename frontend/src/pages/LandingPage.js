@@ -15,7 +15,7 @@ function LandingPage() {
 
   const fetchContent = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/content-landingpage");
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/content-landingpage`);
       if (!response.ok) throw new Error("Error fetching content");
       const data = await response.json();
       setContent(data);
@@ -26,7 +26,7 @@ function LandingPage() {
 
   const fetchGatos = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/gatos");
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/gatos`);
       if (!response.ok) throw new Error("Error fetching gatos");
       const data = await response.json();
       setGatos(data);
@@ -37,7 +37,7 @@ function LandingPage() {
 
   const fetchImagenes = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/imagenes");
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/imagenes`);
       if (!response.ok) throw new Error("Error fetching imagenes");
       const data = await response.json();
       setImagenes(data);

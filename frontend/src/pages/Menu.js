@@ -7,14 +7,14 @@ function Menu() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/menu")
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/menu`)
       .then(response => response.json())
       .then(data => setMenuItems(data))
       .catch(err => console.error("Error fetching menu items:", err));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/imagenes")
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/imagenes`)
       .then(response => response.json())
       .then(data => setImagenes(data))
       .catch(err => console.error("Error fetching imagenes:", err));
