@@ -2,9 +2,7 @@ version: '3.8'
 
 services:
   backend:
-    build:
-      context: ./backend-rust
-      dockerfile: Dockerfile
+    image: etxsae/catcafe-backend
     container_name: backend-rust
     ports:
       - "8000:8000"
