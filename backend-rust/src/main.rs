@@ -25,7 +25,7 @@ fn rocket() -> _ {
     rocket::build()
         .attach(cors)
         .attach(DbConn::fairing())
-        .mount("/", routes![
+        .mount("/api", routes![
             routes::login,
             routes::get_menu,
             routes::get_gatos,

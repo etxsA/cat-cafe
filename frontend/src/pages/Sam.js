@@ -6,7 +6,7 @@ function Sam() {
   const [imagenes, setImagenes] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:8000/sam-content")
+    fetch("http://localhost:8000/api/sam-content")
       .then(response => response.json())
       .then(data => setContent(data))
       .catch(err => console.error("Error fetching SAM content:", err));
@@ -14,7 +14,7 @@ function Sam() {
 
   useEffect(() => {
 
-    fetch("http://localhost:8000/sam-image")
+    fetch("http://localhost:8000/api/sam-image")
       .then(response => response.json())
       .then(data => setImagenes(data))
       .catch(err => console.error("Error fetching images:", err));

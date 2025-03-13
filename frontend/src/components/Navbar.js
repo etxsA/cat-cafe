@@ -11,7 +11,7 @@ function Navbar() {
   useEffect(() => {
     const fetchImagenes = async () => {
       try {
-        const response = await fetch("http://localhost:8000/imagenes");
+        const response = await fetch("http://localhost:8000/api/imagenes");
         if (!response.ok) throw new Error("Error fetching imagenes");
         const data = await response.json();
         setImagenes(data);

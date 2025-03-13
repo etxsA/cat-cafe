@@ -1,14 +1,18 @@
 version: '3.8'
-# Used to deploy without building images
+
 services:
   backend:
-    image: etxsae/catcafe-backend
+    build:
+      context: ./backend-rust
+      dockerfile: Dockerfile
     container_name: backend-rust
     ports:
       - "8000:8000"
 
   frontend:
-    image: etxsae/catcafe-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     container_name: frontend
     ports:
       - "80:3000"
